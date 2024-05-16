@@ -1,0 +1,98 @@
+<!Doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthAI Navigator</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+</head>
+<body class="bg-gray-100 text-gray-900 font-sans p-4">
+    <div class="container mx-auto">
+        <h1 class="text-xl font-bold mb-4 text-center">HealthAI Navigator - Orientación de Salud Personalizada con OpenAI</h1>
+        <form action="/form_salud" method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <div class="mb-4">
+                <label for="nombre" class="block text-gray-700 text-sm font-bold mb-2">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+
+            <div class="mb-4">
+                <label for="edad" class="block text-gray-700 text-sm font-bold mb-2">Edad:</label>
+                <input type="number" id="edad" name="edad" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+
+            <div class="mb-4">
+                <label for="peso" class="block text-gray-700 text-sm font-bold mb-2">Peso (kg):</label>
+                <input type="number" id="peso" name="peso" step="0.01" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+
+            <div class="mb-4">
+                <label for="altura" class="block text-gray-700 text-sm font-bold mb-2">Altura (cm):</label>
+                <input type="number" id="altura" name="altura" step="0.01" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+
+            <div class="mb-4">
+                <label for="glucosa" class="block text-gray-700 text-sm font-bold mb-2">Nivel de Glucosa en Sangre (mg/dL):</label>
+                <input type="number" id="glucosa" name="glucosa" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+
+            <div class="mb-4">
+                <label for="presion_sistolica" class="block text-gray-700 text-sm font-bold mb-2">Presión Arterial Sistólica (mmHg):</label>
+                <input type="number" id="presion_sistolica" name="presion_sistolica" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            
+            <div class="mb-4">
+                <label for="presion_diastolica" class="block text-gray-700 text-sm font-bold mb-2">Presión Arterial Diastólica (mmHg):</label>
+                <input type="number" id="presion_diastolica" name="presion_diastolica" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            
+            <div class="mb-4">
+                <label for="alergias" class="block text-gray-700 text-sm font-bold mb-2">Alergias:</label>
+                <input type="text" id="alergias" name="alergias" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Especifica cualquier alergia conocida.">
+            </div>
+
+            <div class="mb-4">
+                <label for="actividad_fisica" class="block text-gray-700 text-sm font-bold mb-2">Nivel de actividad física:</label>
+                <select id="actividad_fisica" name="actividad_fisica" required class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <option value="Baja">Baja</option>
+                    <option value="Moderada">Moderada</option>
+                    <option value="Alta">Alta</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label for="sintomas" class="block text-gray-700 text-sm font-bold mb-2">Síntomas recientes (opcional):</label>
+                <textarea id="sintomas" name="sintomas" rows="4" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+            </div>
+
+            <div class="mb-4">
+                <label for="historial" class="block text-gray-700 text-sm font-bold mb-2">Historial médico familiar (opcional):</label>
+                <textarea id="historial" name="historial" rows="4" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+            </div>
+
+            <div class="mb-4">
+                <label for="alimentacion" class="block text-gray-700 text-sm font-bold mb-2">Hábitos alimenticios:</label>
+                <textarea id="alimentacion" name="alimentacion" rows="3" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Describe tus hábitos alimenticios, como dietas especiales o restricciones."></textarea>
+            </div>
+
+            <div class="mb-4">
+                <label for="vacunacion" class="block text-gray-700 text-sm font-bold mb-2">Historial de vacunación:</label>
+                <textarea id="vacunacion" name="vacunacion" rows="3" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Menciona tus últimas vacunas y fechas."></textarea>
+            </div>
+
+            <div class="mb-4">
+                <label for="medicaciones" class="block text-gray-700 text-sm font-bold mb-2">Medicaciones actuales:</label>
+                <textarea id="medicaciones" name="medicaciones" rows="3" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Lista de medicamentos que estás tomando actualmente."></textarea>
+            </div>
+
+
+            <div class="mb-4">
+                <label for="archivos" class="block text-gray-700 text-sm font-bold mb-2">Cargar archivos médicos (opcional):</label>
+                <input type="file" id="archivos" name="archivos" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" multiple>
+                <p class="text-gray-600 text-xs italic">Puedes cargar resultados de análisis, imágenes de radiografías, etc.</p>
+            </div>
+
+            <input type="submit" value="Generar Informe de Salud" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+        </form>
+    </div>
+</body>
+</html>
