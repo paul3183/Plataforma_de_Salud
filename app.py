@@ -79,5 +79,5 @@ def form_salud():
     # Enviar el PDF al usuario
     return send_file(pdf_output, as_attachment=True)
 
-"""if __name__ == '__main__':
-    app.run(debug=True)"""
+if __name__ == '__main__':
+    app.run(debug=True)
