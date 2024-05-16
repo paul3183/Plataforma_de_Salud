@@ -4,6 +4,7 @@ import requests
 from dotenv import load_dotenv
 from fpdf import FPDF
 from flask import Flask, request, send_file, render_template
+from io import BytesIO
 
 # Carga las variables de entorno desde un archivo .env
 load_dotenv()
@@ -71,13 +72,14 @@ def form_salud():
 
     # Añadir el informe generado por OpenAI
     pdf.multi_cell(0, 10, txt=f"Informe Médico:\n{respuesta_texto}")
-    
-    # Guardar el PDF
-    pdf_output = 'Informe_Salud.pdf'
+
+    # Crear un objeto BytesIO
+    pdf_output = BytesIO()
     pdf.output(pdf_output)
+    pdf_output.seek(0)
 
     # Enviar el PDF al usuario
-    return send_file(pdf_output, as_attachment=True)
+    return send_file(pdf_output, as_attachment=True, download_name='Informe_Salud.pdf', mimetype='application/pdf')
 
 if __name__ == '__main__':
     app.run(debug=True)
